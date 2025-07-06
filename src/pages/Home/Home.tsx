@@ -47,7 +47,10 @@ export const Home = () => {
   );
 
   useEffect(() => {
-    const handler = setTimeout(() => setDebouncedSearch(name), 500);
+    const handler = setTimeout(() => {
+      setDebouncedSearch(name);
+      setPage(1);
+    }, 500);
 
     return () => clearTimeout(handler);
   }, [name]);

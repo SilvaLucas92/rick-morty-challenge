@@ -1,5 +1,5 @@
 $navbar-bg: #e9ecef;
-$navbar-border: #adb5bd;
+$navbar-border: #ced4da;
 $navbar-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 $navbar-text: #495057;
 $navbar-text-hover: #212529;
@@ -34,7 +34,7 @@ $tablet: 1024px;
   background-color: $navbar-bg;
   padding: 1rem 0;
   box-shadow: $navbar-shadow;
-  border-bottom: 1px solid $navbar-border;
+  border-bottom: 2px solid $navbar-bg;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -78,10 +78,6 @@ $tablet: 1024px;
 
     @media (min-width: $mobile) and (max-width: $tablet) {
       gap: 1.5rem;
-    }
-
-    @media (min-width: $tablet) {
-      gap: 2rem;
     }
   }
 
