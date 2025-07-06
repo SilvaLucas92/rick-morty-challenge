@@ -34,6 +34,7 @@ export const Home = () => {
 
   const removeFilter = (filterKey: string) => {
     setFilters({ ...filters, [filterKey]: "" });
+    setPage(1)
   };
 
   const hasActiveFilters = name || species || status;
@@ -124,7 +125,7 @@ export const Home = () => {
         />
       )}
 
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} setPage={setPage}/>
     </Container>
   );
 };

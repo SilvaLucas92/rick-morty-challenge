@@ -8,6 +8,7 @@ import { Button } from "../Button/Button";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  setPage: (page: number) => void;
 }
 
 const status = ["Alive", "Dead", "Unknown"];
@@ -25,7 +26,7 @@ const species = [
   "Planet",
 ];
 
-export const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, setPage }) => {
   if (!isOpen) return null;
 
   const { filters, setFilters } = useFilters();
@@ -43,6 +44,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFilters((prev) => ({ ...prev, ...values }));
+    setPage(1);
     onClose();
   };
 
