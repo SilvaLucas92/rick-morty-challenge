@@ -2,6 +2,16 @@
 
 Aplicación desarrollada en **React + TypeScript** que consume la API pública de Rick & Morty para mostrar personajes, filtrarlos, marcarlos como favoritos y visualizar sus detalles. 
 
+
+---
+
+## 🌐 Demo en producción
+
+La aplicación está desplegada en Vercel:
+
+🔗 [https://rick-morty-challenge-pi.vercel.app](https://rick-morty-challenge-pi.vercel.app)
+
+
 ---
 
 ## 🚀 Cómo inicializar el proyecto
