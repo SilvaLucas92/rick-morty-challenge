@@ -6,7 +6,6 @@ import type { Character } from "../../types/character";
 import type { Episode } from "../../types/episode";
 import "@testing-library/jest-dom";
 
-
 const mockCharacter: Character = {
   id: 1,
   name: "Rick Sanchez",
@@ -26,8 +25,24 @@ const mockCharacter: Character = {
 };
 
 const mockEpisodes: Episode[] = [
-  { id: 1, name: "Pilot", air_date: "December 2, 2013", episode: "S01E01", characters: [], url: "", created: "" },
-  { id: 2, name: "Lawnmower Dog", air_date: "December 9, 2013", episode: "S01E02", characters: [], url: "", created: "" },
+  {
+    id: 1,
+    name: "Pilot",
+    air_date: "December 2, 2013",
+    episode: "S01E01",
+    characters: [],
+    url: "",
+    created: "",
+  },
+  {
+    id: 2,
+    name: "Lawnmower Dog",
+    air_date: "December 9, 2013",
+    episode: "S01E02",
+    characters: [],
+    url: "",
+    created: "",
+  },
 ];
 
 jest.mock("react-router-dom", () => ({
@@ -35,11 +50,9 @@ jest.mock("react-router-dom", () => ({
   useParams: () => ({ id: "1" }),
 }));
 
-
 jest.mock("../../hooks/useFetch", () => ({
   useFetch: jest.fn(),
 }));
-
 
 const renderComponent = () =>
   render(
@@ -80,13 +93,11 @@ describe("CharacterDetail component", () => {
   });
 
   it("renders character and episodes correctly", () => {
-
     (useFetch as jest.Mock).mockReturnValueOnce({
       data: mockCharacter,
       isLoading: false,
       error: null,
     });
-
 
     (useFetch as jest.Mock).mockReturnValueOnce({
       data: mockEpisodes,
@@ -96,7 +107,7 @@ describe("CharacterDetail component", () => {
 
     renderComponent();
 
-    expect(screen.getByText("Character Detail")).toBeInTheDocument();
+    expect(screen.getByText("Character")).toBeInTheDocument();
     expect(screen.getByText("Rick Sanchez")).toBeInTheDocument();
     expect(screen.getByText("Species:")).toBeInTheDocument();
     expect(screen.getByText("Human")).toBeInTheDocument();
