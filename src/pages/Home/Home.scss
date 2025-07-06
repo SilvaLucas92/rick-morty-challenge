@@ -1,0 +1,173 @@
+$container-max-width: 1200px;
+$title-color: #333;
+$search-border: #e0e0e0;
+$search-border-focus: #868e96;
+$button-bg: #212529;
+$button-bg-hover: #495057;
+$error-bg: #ffebee;
+$error-border: #f44336;
+$error-text: #c62828;
+$no-results-color: #666;
+
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1440px;
+
+@mixin grid-columns($columns) {
+  grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin responsive-grid {
+  @include grid-columns(1);
+
+  @media (min-width: $mobile) {
+    @include grid-columns(2);
+    gap: 24px;
+  }
+
+  @media (min-width: $tablet) {
+    @include grid-columns(3);
+    gap: 30px;
+  }
+
+  @media (min-width: $desktop) {
+    @include grid-columns(4);
+  }
+}
+
+.home-title {
+  text-align: left;
+  margin-bottom: 20px;
+  color: $title-color;
+  font-size: 2.5rem;
+  font-weight: 700;
+
+  @media (min-width: $mobile) {
+    font-size: 3rem;
+  }
+}
+
+.search-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  width: 100%;
+
+  @media (min-width: $mobile) {
+    flex-direction: row;
+    gap: 12px;
+    align-items: stretch;
+
+    .button {
+      flex: 1;
+      min-width: 120px;
+      max-width: 150px;
+    }
+  }
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 20px;
+  border: 2px solid $search-border;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $search-border-focus;
+    box-shadow: 0 0 0 3px rgba(134, 142, 150, 0.1);
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+
+  @media (min-width: $mobile) {
+    flex: 4;
+    min-width: 200px;
+  }
+}
+
+.active-filters {
+  margin-bottom: 20px;
+
+  h3 {
+    margin: 0 0 12px 0;
+    color: $title-color;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: default;
+
+      .filter-remove-btn {
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin-bottom: 2px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.home-content {
+  min-height: 400px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  gap: 16px;
+}
+
+.error {
+  text-align: center;
+  padding: 40px;
+  background-color: $error-bg;
+  border: 1px solid $error-border;
+  border-radius: 8px;
+  color: $error-text;
+
+  h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+}
+
+.characters-grid {
+  display: grid;
+  gap: 12px;
+  @include responsive-grid;
+}
+
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  color: $no-results-color;
+  padding: 40px;
+}

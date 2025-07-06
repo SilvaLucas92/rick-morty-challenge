@@ -1,0 +1,117 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 500px;
+  min-width: 320px;
+  width: 100%;
+  position: relative;
+  margin: 10px;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  &-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+
+  &-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+  }
+
+  @media (min-width: 769px) {
+    padding: 24px;
+    margin: 0;
+
+    &-title {
+      font-size: 1rem;
+    }
+  }
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  &-select {
+    padding: 10px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #c0c0c0;
+    }
+
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+
+    @media (min-width: 769px) {
+      padding: 12px 20px;
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 769px) {
+    gap: 12px;
+  }
+}

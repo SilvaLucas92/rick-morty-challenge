@@ -1,0 +1,136 @@
+$navbar-bg: #e9ecef;
+$navbar-border: #adb5bd;
+$navbar-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+$navbar-text: #495057;
+$navbar-text-hover: #212529;
+$navbar-transition: all 0.3s ease;
+
+$mobile: 768px;
+$tablet: 1024px;
+
+@mixin mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: $navbar-bg;
+  flex-direction: column;
+  gap: 0;
+  padding: 1rem 0;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: $navbar-transition;
+  box-shadow: $navbar-shadow;
+
+  &.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.navbar {
+  background-color: $navbar-bg;
+  padding: 1rem 0;
+  box-shadow: $navbar-shadow;
+  border-bottom: 1px solid $navbar-border;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  &-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: $mobile) {
+      padding: 0 2rem;
+    }
+  }
+
+  &-title {
+    color: $navbar-text;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $navbar-text-hover;
+    }
+  }
+
+  &-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: $mobile) {
+      @include mobile-menu;
+    }
+
+    @media (min-width: $mobile) and (max-width: $tablet) {
+      gap: 1.5rem;
+    }
+
+    @media (min-width: $tablet) {
+      gap: 2rem;
+    }
+  }
+
+  &-item {
+    color: $navbar-text;
+    text-decoration: none;
+    font-weight: 500;
+    transition: $navbar-transition;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: block;
+    position: relative;
+
+    &:hover {
+      color: $navbar-text-hover;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    @media (max-width: $mobile) {
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 0;
+    }
+  }
+
+  &-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    outline: none;
+    color: $navbar-text;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $navbar-text-hover;
+    }
+
+    @media (min-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
+}

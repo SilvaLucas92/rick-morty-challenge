@@ -1,0 +1,133 @@
+$card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+$card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+$status-alive: #4caf50;
+$status-dead: #f44336;
+$status-unknown: #9e9e9e;
+
+$heart-color: #ff4757;
+$heart-bg: white;
+
+
+.card {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: $card-shadow;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+
+    box-shadow: $card-shadow-hover;
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &:hover &-image img {
+    transform: scale(1.05);
+  }
+
+  .heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+    color: #dee2e6;
+    background: $heart-bg;
+    border-radius: 50%;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+
+    &.favorite {
+      color: $heart-color;
+      background: white;
+    }
+  }
+
+  &-content {
+    padding:16px;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  &-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  &-info {
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-label {
+      color: #666;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-value {
+      color: #333;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    &-title {
+      font-size: 18px;
+    }
+
+    &-info {
+      font-size: 14px;
+    }
+  }
+}

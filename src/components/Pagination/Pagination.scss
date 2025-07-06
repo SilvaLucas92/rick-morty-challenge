@@ -1,0 +1,37 @@
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+
+  @media (min-width: 769px) {
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+}
+
+.current-page {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  padding: 0.5rem 1rem;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .pagination-container {
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .current-page {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    min-width: 60px;
+  }
+}
