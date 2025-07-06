@@ -94,35 +94,25 @@ $desktop: 1440px;
   }
 }
 
-.active-filters {
-  margin-bottom: 20px;
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
 
-  h3 {
-    margin: 0 0 12px 0;
-    color: $title-color;
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-
-  .filters-container {
+  .badge {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
     align-items: center;
+    gap: 6px;
+    cursor: default;
 
-    .badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: default;
-
-      .filter-remove-btn {
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        margin-bottom: 2px;
-        font-size: 12px;
-      }
+    .filter-remove-btn {
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-size: 12px;
+      margin-top: 2px;
     }
   }
 }

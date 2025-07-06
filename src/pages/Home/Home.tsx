@@ -12,6 +12,7 @@ import { BASE_URL } from "../../utils";
 import type { Character } from "../../types/character";
 import { useFavorites } from "../../context/FavoritesContext";
 import { useFilters } from "../../context/FiltersContext";
+import { RxCross1 } from "react-icons/rx";
 
 interface CharactersResponse {
   results: Character[];
@@ -34,7 +35,7 @@ export const Home = () => {
 
   const removeFilter = (filterKey: string) => {
     setFilters({ ...filters, [filterKey]: "" });
-    setPage(1)
+    setPage(1);
   };
 
   const hasActiveFilters = name || species || status;
@@ -51,7 +52,11 @@ export const Home = () => {
     return () => clearTimeout(handler);
   }, [name]);
 
-  const filtersToMap = [{key: "name", value: debouncedSearch }, {key: "species", value: species}, {key: "status", value: status}].filter((filter) => filter.value !== "");
+  const filtersToMap = [
+    { key: "name", value: debouncedSearch },
+    { key: "species", value: species },
+    { key: "status", value: status },
+  ].filter((filter) => filter.value !== "");
 
   const characters = data?.results || [];
 
@@ -71,20 +76,18 @@ export const Home = () => {
       </section>
 
       {hasActiveFilters && (
-        <section className="active-filters">
-          <div className="filters-container">
-            {filtersToMap.map((filter) => (
-              <Badge key={filter.key} color="gray">
-                {filter.key}: {filter.value}
-                <button
-                  onClick={() => removeFilter(filter.key)}
-                  className="filter-remove-btn"
-                >
-                  ✕
-                </button>
-              </Badge>
-            ))}
-          </div>
+        <section className="filters-container">
+          {filtersToMap.map((filter) => (
+            <Badge key={filter.key} color="gray">
+              {filter.key}: {filter.value}
+              <button
+                onClick={() => removeFilter(filter.key)}
+                className="filter-remove-btn"
+              >
+                <RxCross1 size={12} />
+              </button>
+            </Badge>
+          ))}
         </section>
       )}
 
@@ -125,7 +128,11 @@ export const Home = () => {
         />
       )}
 
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} setPage={setPage}/>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        setPage={setPage}
+      />
     </Container>
   );
 };
