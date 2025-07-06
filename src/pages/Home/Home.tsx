@@ -62,28 +62,29 @@ export const Home = () => {
 
   return (
     <Container>
-      <h1 className="home-title">Characters</h1>
-      <section className="search-section">
-        <input
-          id="character-search"
-          type="search"
-          placeholder="Search characters..."
-          value={name}
-          onChange={(e) => setFilters({ ...filters, name: e.target.value })}
-          className="search-input"
-        />
+      <section className="home-header">
+        <h1>Characters</h1>
         <Button onClick={() => setIsModalOpen(true)}>Filters</Button>
       </section>
+
+      <input
+        id="character-search"
+        type="search"
+        placeholder="Search characters..."
+        value={name}
+        onChange={(e) => setFilters({ ...filters, name: e.target.value })}
+        className="search-input"
+      />
 
       {hasActiveFilters && (
         <section className="filters-container">
           {filtersToMap.map((filter) => (
             <Badge key={filter.key} color="gray">
-              {filter.key}: {filter.value}
               <button
                 onClick={() => removeFilter(filter.key)}
                 className="filter-remove-btn"
               >
+                {filter.key}: {filter.value}
                 <RxCross1 size={12} />
               </button>
             </Badge>

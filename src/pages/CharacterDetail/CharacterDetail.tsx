@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { useFetch } from "../../hooks/useFetch";
@@ -7,6 +7,7 @@ import type { Character } from "../../types/character";
 import type { Episode } from "../../types/episode";
 import "./CharacterDetail.scss";
 import { Badge } from "../../components/Badge/Badge";
+import { Button } from "../../components/Button/Button";
 
 const CharacterItem = ({ label, value }: { label: string; value: string }) => (
   <div className="info-item">
@@ -17,6 +18,7 @@ const CharacterItem = ({ label, value }: { label: string; value: string }) => (
 
 export const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const {
     data: character,
@@ -57,7 +59,10 @@ export const CharacterDetail = () => {
 
   return (
     <Container>
-      <h1 className="character-detail-title">Character Detail</h1>
+      <section className="character-header">
+        <h1>Character</h1>
+        <Button onClick={() => navigate(-1)}>Back</Button>
+      </section>
       <section className="character-detail-content">
         <img
           src={character.image}
@@ -65,7 +70,7 @@ export const CharacterDetail = () => {
           className="character-image"
         />
 
-        <section className="character-info">
+        <div className="character-info">
           <article className="info-section">
             <h2>{character.name}</h2>
             <div className="info-grid">
@@ -102,7 +107,7 @@ export const CharacterDetail = () => {
               </div>
             )}
           </article>
-        </section>
+        </div>
       </section>
     </Container>
   );

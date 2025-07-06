@@ -35,35 +35,23 @@ $desktop: 1440px;
   }
 }
 
-.home-title {
-  text-align: left;
-  margin-bottom: 20px;
-  color: $title-color;
-  font-size: 2.5rem;
-  font-weight: 700;
-
-  @media (min-width: $mobile) {
-    font-size: 3rem;
-  }
-}
-
-.search-section {
+.home-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   gap: 16px;
   margin-bottom: 20px;
-  width: 100%;
 
-  @media (min-width: $mobile) {
-    flex-direction: row;
-    gap: 12px;
-    align-items: stretch;
+  h1 {
+    margin-bottom: 0;
+    color: $title-color;
+    font-weight: 700;
+    font-size: 1.8rem;
+    flex: 1;
 
-    .button {
-      flex: 1;
-      min-width: 120px;
-      max-width: 150px;
+    @media (min-width: $tablet) {
+      font-size: 2rem;
     }
   }
 }
@@ -71,13 +59,14 @@ $desktop: 1440px;
 .search-input {
   flex: 1;
   min-width: 0;
-  padding: 12px 20px;
+  padding: 8px 12px;
   border: 2px solid $search-border;
   border-radius: 8px;
   font-size: 16px;
   outline: none;
   width: 100%;
   transition: border-color 0.3s ease;
+  margin-bottom: 16px;
 
   &:focus {
     border-color: $search-border-focus;
@@ -101,19 +90,15 @@ $desktop: 1440px;
   align-items: center;
   margin-bottom: 16px;
 
-  .badge {
+  .filter-remove-btn {
+    border: none;
+    cursor: pointer;
+    padding: 0;
     display: flex;
     align-items: center;
-    gap: 6px;
-    cursor: default;
-
-    .filter-remove-btn {
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      font-size: 12px;
-      margin-top: 2px;
-    }
+    justify-content: space-between;
+    opacity: 70%;
+    gap: 4px;
   }
 }
 
