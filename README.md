@@ -5,14 +5,6 @@ Aplicación desarrollada en **React + TypeScript** que consume la API pública d
 
 ---
 
-## 🌐 Demo en producción
-
-La aplicación está desplegada en Vercel:
-
-🔗 [https://rick-morty-challenge-pi.vercel.app](https://rick-morty-challenge-pi.vercel.app)
-
-
----
 
 ## 🚀 Cómo inicializar el proyecto
 
