@@ -87,26 +87,7 @@ describe("Home component", () => {
 
     renderWithProviders(<Home />);
 
-    expect(screen.getByText("No characters found.")).toBeInTheDocument();
-  });
-
-  it("updates search input when user types in the search bar", async () => {
-    (useFetch as jest.Mock).mockReturnValue({
-      data: {
-        results: mockCharacters,
-        info: { pages: 1, next: null, prev: null },
-      },
-      isLoading: false,
-      error: null,
-    });
-
-    renderWithProviders(<Home />);
-
-    const input = screen.getByPlaceholderText("Search characters...");
-
-    await userEvent.type(input, "Morty");
-
-    expect((input as HTMLInputElement).value).toBe("Morty");
+    expect(screen.getByText("No characters.")).toBeInTheDocument();
   });
 
   it("opens modal, changes filters, submits and returns filtered list", async () => {
@@ -162,5 +143,38 @@ describe("Home component", () => {
 
     expect(screen.getByText("status: Alive")).toBeInTheDocument();
     expect(screen.getByText("species: Human")).toBeInTheDocument();
+  });
+
+  it("change input value and show filtered data", async () => {
+    (useFetch as jest.Mock).mockReturnValue({
+      data: {
+        results: mockCharacters,
+        info: { pages: 1, next: null, prev: null },
+      },
+      isLoading: false,
+      error: null,
+    });
+
+    renderWithProviders(<Home />);
+
+    const input = screen.getByPlaceholderText("Search characters...");
+
+    await userEvent.type(input, "Morty");
+
+    (useFetch as jest.Mock).mockReturnValue({
+      data: {
+        results: mockFilteredCharacters,
+        info: { pages: 1, next: null, prev: null },
+      },
+      isLoading: false,
+      error: null,
+    });
+
+    expect(await screen.findByText("Morty Smith")).toBeInTheDocument();
+
+    expect(await screen.getByText("Human")).toBeInTheDocument();
+    expect(await screen.getByText("Citadel of Ricks")).toBeInTheDocument();
+
+    expect(screen.queryByText("Rick Sanchez")).not.toBeInTheDocument();
   });
 });

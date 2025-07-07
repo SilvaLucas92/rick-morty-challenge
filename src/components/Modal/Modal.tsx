@@ -76,7 +76,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, setPage }) => {
             >
               <option value="">Select a status</option>
               {status.map((value) => (
-                <option value={value}>{value}</option>
+                <option value={value} key={value}>{value}</option>
               ))}
             </select>
           </div>
@@ -94,7 +94,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, setPage }) => {
             >
               <option value="">Select a specie</option>
               {species.map((value) => (
-                <option value={value}>{value}</option>
+                <option value={value} key={value}>{value}</option>
               ))}
             </select>
           </div>
