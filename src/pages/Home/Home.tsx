@@ -101,14 +101,11 @@ export const Home = () => {
             <Spinner />
           </div>
         ) : error ? (
-          <div className="error" role="alert">
-            <h3>Error</h3>
-            <p>{error}</p>
-          </div>
+          <p className="no-results">No characters found.</p>
         ) : (
           <div className="characters-grid" role="grid" aria-label="Characters">
             {characters.length === 0 ? (
-              <p className="no-results">No characters found.</p>
+              <p className="no-results">No characters.</p>
             ) : (
               characters.map((character) => (
                 <Card
