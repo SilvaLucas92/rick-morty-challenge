@@ -17,7 +17,7 @@ const mockCharacters: Character[] = [
     type: "",
     gender: "Male",
     origin: { name: "Earth", url: "" },
-    location: { name: "Earth", url: "" },
+    location: { name: "Citadel of Ricks", url: "" },
     image: "https://example.com/rick.png",
     episode: [],
     url: "",
@@ -34,7 +34,7 @@ const mockFilteredCharacters: Character[] = [
     type: "",
     gender: "Male",
     origin: { name: "Earth", url: "" },
-    location: { name: "Earth", url: "" },
+    location: { name: "Citadel of Ricks", url: "" },
     image: "https://example.com/morty.png",
     episode: [],
     url: "",
@@ -71,6 +71,8 @@ describe("Home component", () => {
 
     expect(screen.getByText("Characters")).toBeInTheDocument();
     expect(screen.getByText("Rick Sanchez")).toBeInTheDocument();
+    expect(screen.getByText("Human")).toBeInTheDocument();
+    expect(screen.getByText("Citadel of Ricks")).toBeInTheDocument();
     expect(
       screen.getByRole("grid", { name: "Characters" })
     ).toBeInTheDocument();
@@ -153,6 +155,9 @@ describe("Home component", () => {
     ).not.toBeInTheDocument();
 
     expect(screen.getByText("Morty Smith")).toBeInTheDocument();
+    expect(screen.getByText("Human")).toBeInTheDocument();
+    expect(screen.getByText("Citadel of Ricks")).toBeInTheDocument();
+
     expect(screen.queryByText("Rick Sanchez")).not.toBeInTheDocument();
 
     expect(screen.getByText("status: Alive")).toBeInTheDocument();
